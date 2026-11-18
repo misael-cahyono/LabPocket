@@ -1,0 +1,264 @@
+/* =========================================
+   1. VARIABEL WARNA (LIGHT & DARK MODE)
+   ========================================= */
+:root {
+    --bg-color: #f4f7fb;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary-color: #0ea5e9;
+    --secondary-hover: #0284c7;
+    --border-color: #e2e8f0;
+    --input-bg: #f8fafc;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary-color: #6366f1;
+    --primary-hover: #818cf8;
+    --secondary-color: #38bdf8;
+    --secondary-hover: #7dd3fc;
+    --border-color: #334155;
+    --input-bg: #0f172a;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   2. RESET & PENGATURAN DASAR MOBILE-FIRST
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 600px; /* Ukuran optimal untuk layar HP & tablet */
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   3. HEADER & NAVIGASI ATAS
+   ========================================= */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-header h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.btn-back {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+.btn-icon {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-main);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge Angka Notifikasi */
+.badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 999px;
+}
+
+/* =========================================
+   4. HERO SECTION & PILIHAN PERAN (INDEX)
+   ========================================= */
+.hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.hero-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    padding: 28px 20px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.hero-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-card p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.role-selection {
+    background-color: var(--card-bg);
+    padding: 24px 20px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+}
+
+.role-selection h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+/* =========================================
+   5. TOMBOL TOUCH-FRIENDLY & FORMULIR
+   ========================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 48px; /* Ramah sentuhan jari di layar HP */
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover);
+}
+
+/* Input, Textarea & Select */
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--primary-color);
+    border-color: transparent;
+}
+
+/* =========================================
+   6. TOAST NOTIFICATION & UTILITIES
+   ========================================= */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #10b981;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.mt-3 {
+    margin-top: 12px;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 16px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: auto;
+}
