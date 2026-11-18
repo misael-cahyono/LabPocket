@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Siswa - LabPocket</title>
+
+    <!-- CSS Global & Dashboard -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header / Navigasi Atas -->
+        <header class="app-header">
+            <div class="header-left">
+                <a href="index.html" class="btn-back" aria-label="Kembali">⬅️</a>
+                <h1>🔬 Lab Siswa</h1>
+            </div>
+            <div class="header-right">
+                <!-- Ikon Lonceng Notifikasi Tugas -->
+                <button id="notif-btn" class="btn-icon" aria-label="Notifikasi">
+                    🔔 <span id="notif-badge" class="badge hidden">0</span>
+                </button>
+                <!-- Tombol Dark Mode -->
+                <button id="theme-toggle" class="btn-icon" aria-label="Ubah Tema">🌙</button>
+            </div>
+        </header>
+
+        <!-- Toast Notifikasi Melayang -->
+        <div id="toast-notification" class="toast hidden">
+            🔔 Tugas baru dari guru telah ditambahkan!
+        </div>
+
+        <main class="dashboard-content">
+            <!-- 1. Kartu Presensi Kehadiran -->
+            <section class="card attendance-card">
+                <h2>📋 Presensi Kehadiran Hari Ini</h2>
+                <div id="attendance-form">
+                    <input type="text" id="student-name" placeholder="Masukkan Nama Lengkap Anda..." required>
+                    <input type="text" id="student-class" placeholder="Kelas (Contoh: XI IPA 1)" required>
+                    <button id="btn-attend" class="btn btn-primary">✅ Hadir Sekarang</button>
+                </div>
+                <p id="attendance-status" class="status-text hidden"></p>
+            </section>
+
+            <!-- 2. Daftar Tugas dari Guru -->
+            <section class="card assignments-card">
+                <h2>📚 Daftar Tugas Praktikum</h2>
+                <div id="student-assignment-list" class="list-container">
+                    <p class="empty-msg">Belum ada tugas dari guru.</p>
+                </div>
+            </section>
+
+            <!-- 3. Menu Simulasi Lab 3D -->
+            <section class="card simulation-menu-card">
+                <h2>🧪 Pilih Simulasi Lab 3D</h2>
+                <div class="subject-grid">
+                    <button class="subject-btn" onclick="openSimulation('physics')">
+                        ⚛️ <strong>Fisika</strong>
+                        <span>Bandul Matematis</span>
+                    </button>
+                    <button class="subject-btn" onclick="openSimulation('chemistry')">
+                        🧬 <strong>Kimia</strong>
+                        <span>Struktur Molekul 3D</span>
+                    </button>
+                    <button class="subject-btn" onclick="openSimulation('biology')">
+                        🦠 <strong>Biologi</strong>
+                        <span>Sel Hewan & Tumbuhan</span>
+                    </button>
+                </div>
+
+                <!-- Area Canvas 3D & Kuis Mini (Muncul saat simulasi dipilih) -->
+                <div id="simulation-workspace" class="workspace hidden">
+                    <div class="workspace-header">
+                        <h3 id="sim-title">Area Simulasi</h3>
+                        <button class="btn-close" onclick="closeSimulation()">✖ Tutup</button>
+                    </div>
+                    
+                    <!-- Canvas Three.js -->
+                    <div id="canvas-container" class="canvas-box"></div>
+
+                    <!-- Kontrol Variabel Simulasi -->
+                    <div id="sim-controls" class="controls-box">
+                        <label for="param-slider">Ubah Variabel Simulasi:</label>
+                        <input type="range" id="param-slider" min="1" max="10" value="5">
+                    </div>
+
+                    <!-- Kuis Mini Interaktif -->
+                    <div class="quiz-box">
+                        <h4>🧠 Kuis Mini Pemahaman</h4>
+                        <p id="quiz-question">Pertanyaan akan muncul sesuai simulasi yang dipilih.</p>
+                        <div id="quiz-options" class="quiz-options"></div>
+                        <p id="quiz-feedback" class="feedback-text"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Catatan Praktikum (Lab Journal) -->
+            <section class="card journal-card">
+                <h2>📝 Catatan Praktikum (Lab Journal)</h2>
+                <form id="journal-form">
+                    <input type="text" id="journal-title" placeholder="Judul Percobaan (Contoh: Ayunan Bandul)" required>
+                    <textarea id="journal-notes" rows="3" placeholder="Tulis hasil pengamatan dan kesimpulan..." required></textarea>
+                    <button type="submit" class="btn btn-secondary">💾 Simpan Catatan</button>
+                </form>
+                <div id="journal-list" class="list-container">
+                    <!-- Riwayat catatan muncul di sini -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Pustaka Three.js & Skrip Logika -->
+    <script src="js/three.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>
