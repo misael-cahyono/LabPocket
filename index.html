@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabPocket - Laboratorium Saku 3D</title>
+    
+    <!-- PWA Manifest & Meta -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header / Navigasi Atas -->
+        <header class="app-header">
+            <h1>🔬 LabPocket</h1>
+            <button id="theme-toggle" class="btn-icon" aria-label="Ubah Tema">🌙</button>
+        </header>
+
+        <!-- Bagian Utama / Hero -->
+        <main class="hero-section">
+            <div class="hero-card">
+                <h2>Laboratorium Sains 3D dalam Genggaman</h2>
+                <p>Simulasi interaktif Fisika, Kimia, dan Biologi langsung di HP Anda. Belajar jadi lebih mudah dan menyenangkan!</p>
+            </div>
+
+            <!-- Pilihan Masuk (Peran Pengguna) -->
+            <div class="role-selection">
+                <h3>Pilih Masuk Sebagai:</h3>
+                
+                <a href="student-dashboard.html" class="btn btn-primary" onclick="triggerAudioUnlock()">
+                    👦 Masuk sebagai Siswa
+                </a>
+                
+                <a href="teacher-dashboard.html" class="btn btn-secondary" onclick="triggerAudioUnlock()">
+                    👨‍🏫 Masuk sebagai Guru
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 LabPocket. Dirancang untuk Pembelajaran SMA.</p>
+        </footer>
+    </div>
+
+    <!-- Skrip Global -->
+    <script src="js/app.js"></script>
+    <script>
+        // Fungsi untuk membuka izin audio browser (mencegah blokir autoplay)
+        function triggerAudioUnlock() {
+            localStorage.setItem('audioUnlocked', 'true');
+        }
+    </script>
+</body>
+</html>
