@@ -8,6 +8,9 @@
     <!-- CSS Global & Dashboard -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Pustaka Three.js Langsung dari CDN (Stabil & Cepat) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 </head>
 <body>
 
@@ -19,11 +22,9 @@
                 <h1>🔬 Lab Siswa</h1>
             </div>
             <div class="header-right">
-                <!-- Ikon Lonceng Notifikasi Tugas -->
                 <button id="notif-btn" class="btn-icon" aria-label="Notifikasi">
                     🔔 <span id="notif-badge" class="badge hidden">0</span>
                 </button>
-                <!-- Tombol Dark Mode -->
                 <button id="theme-toggle" class="btn-icon" aria-label="Ubah Tema">🌙</button>
             </div>
         </header>
@@ -57,25 +58,28 @@
             <section class="card simulation-menu-card">
                 <h2>🧪 Pilih Simulasi Lab 3D</h2>
                 <div class="subject-grid">
-                    <button class="subject-btn" onclick="openSimulation('physics')">
-                        ⚛️ <strong>Fisika</strong>
+                    <button type="button" class="subject-btn phys" onclick="openSimulation('physics')">
+                        <span class="emoji-icon">⚛️</span>
+                        <strong>Fisika</strong>
                         <span>Bandul Matematis</span>
                     </button>
-                    <button class="subject-btn" onclick="openSimulation('chemistry')">
-                        🧬 <strong>Kimia</strong>
-                        <span>Struktur Molekul 3D</span>
+                    <button type="button" class="subject-btn chem" onclick="openSimulation('chemistry')">
+                        <span class="emoji-icon">🧬</span>
+                        <strong>Kimia</strong>
+                        <span>Struktur Molekul</span>
                     </button>
-                    <button class="subject-btn" onclick="openSimulation('biology')">
-                        🦠 <strong>Biologi</strong>
-                        <span>Sel Hewan & Tumbuhan</span>
+                    <button type="button" class="subject-btn bio" onclick="openSimulation('biology')">
+                        <span class="emoji-icon">🦠</span>
+                        <strong>Biologi</strong>
+                        <span>Sel Organel 3D</span>
                     </button>
                 </div>
 
-                <!-- Area Canvas 3D & Kuis Mini (Muncul saat simulasi dipilih) -->
+                <!-- Area Canvas 3D & Kuis Mini -->
                 <div id="simulation-workspace" class="workspace hidden">
                     <div class="workspace-header">
                         <h3 id="sim-title">Area Simulasi</h3>
-                        <button class="btn-close" onclick="closeSimulation()">✖ Tutup</button>
+                        <button type="button" class="btn-close" onclick="closeSimulation()">✖ Tutup</button>
                     </div>
                     
                     <!-- Canvas Three.js -->
@@ -83,7 +87,7 @@
 
                     <!-- Kontrol Variabel Simulasi -->
                     <div id="sim-controls" class="controls-box">
-                        <label for="param-slider">Ubah Variabel Simulasi:</label>
+                        <label for="param-slider">🎛️ Atur Kecepatan / Ukuran Simulasi:</label>
                         <input type="range" id="param-slider" min="1" max="10" value="5">
                     </div>
 
@@ -105,15 +109,12 @@
                     <textarea id="journal-notes" rows="3" placeholder="Tulis hasil pengamatan dan kesimpulan..." required></textarea>
                     <button type="submit" class="btn btn-secondary">💾 Simpan Catatan</button>
                 </form>
-                <div id="journal-list" class="list-container">
-                    <!-- Riwayat catatan muncul di sini -->
-                </div>
+                <div id="journal-list" class="list-container"></div>
             </section>
         </main>
     </div>
 
-    <!-- Pustaka Three.js & Skrip Logika -->
-    <script src="js/three.min.js"></script>
+    <!-- Skrip Logika -->
     <script src="js/app.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/simulation.js"></script>
